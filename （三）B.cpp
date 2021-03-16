@@ -48,7 +48,7 @@ void init(int len){
         }
     }
 }
-void NTT(int a[],int len,int op){//op=0:ϵ��ת��ֵ,op=1:��ֵתϵ�� 
+void NTT(int a[],int len,int op){//op=0:系数转点值,op=1:点值转系数 
     for(int i=0;i<len;i++){
         rev[i]=(rev[i>>1]>>1)|((i&1)*(len>>1));
         if(i<rev[i])
@@ -122,9 +122,9 @@ int main(){
 	}
 	int len=1;
 	while(len<=n) len<<=1;
-    init(len);
-    solve(1,2,n);
-    if(2<n-1){
+    	init(len);
+    	solve(1,2,n);
+    	if(2<n-1){
 		int a=2+(2>=rt);
 		fl[0]=dec(1,a),fl[1]=dec(a,n+1);
 	}
