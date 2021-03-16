@@ -33,8 +33,8 @@ int main(){
 				}
 				else{
 					ll k=(-a-1)/b+1;
-                	a+=b*k;
-                	t+=k;
+                			a+=b*k;
+                			t+=k;
 				}
 			}
 		}
