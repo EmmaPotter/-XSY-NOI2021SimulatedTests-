@@ -5,12 +5,12 @@ using namespace std;
 const int N=5e5+5;
 int n;
 double val,a[N],sum[N];
-double ave1(int m,int t){//¾¡¿ÉÄÜÈ¡Ğ¡ 
+double ave1(int m,int t){//å°½å¯èƒ½å–å°
 	double c=sum[t]+sum[m+t]-sum[m-1];
 	c=c/(2*t+1);
 	return c;
 }
-double ave2(int m,int t){//¾¡¿ÉÄÜÈ¡´ó 
+double ave2(int m,int t){//å°½å¯èƒ½å–å¤§ 
 	double c=sum[m]-sum[m-t-1]+sum[n]-sum[n-t];
 	c=c/(2*t+1);
 	return c;
