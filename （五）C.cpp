@@ -10,10 +10,10 @@ struct Edge{
 }edge[N<<1];
 int n,m,cnt,head[N];ll a[N];
 int dep[N],fa[N],sz[N],son[N],top[N],dfn[N],ind;
-ll sum[N];//sum[u]±íÊ¾ÒÔuÎª¸ùµÄ×ÓÊ÷ÖĞÆ»¹û¸öÊı×ÜºÍ
-ll ssum[N];//ssum[u]±íÊ¾uµÄÇá¶ù×ÓµÄsumºÍ
-ll ans[N];//ans[u]±íÊ¾uµÄÇá¶ù×ÓµÄ²»ºÏ·¨·½°¸ÊıÁ½±¶×ÜºÍ 
-ll c[N];//c[i]±íÊ¾dfnĞòÔÚ[1,i]µÄµãÏÖ³ÖÓĞµÄÆ»¹û¸öÊı×ÜºÍ 
+ll sum[N];//sum[u]è¡¨ç¤ºä»¥uä¸ºæ ¹çš„å­æ ‘ä¸­è‹¹æœä¸ªæ•°æ€»å’Œ
+ll ssum[N];//ssum[u]è¡¨ç¤ºuçš„è½»å„¿å­çš„sumå’Œ
+ll ans[N];//ans[u]è¡¨ç¤ºuçš„è½»å„¿å­çš„ä¸åˆæ³•æ–¹æ¡ˆæ•°ä¸¤å€æ€»å’Œ 
+ll c[N];//c[i]è¡¨ç¤ºdfnåºåœ¨[1,i]çš„ç‚¹ç°æŒæœ‰çš„è‹¹æœä¸ªæ•°æ€»å’Œ 
 ll S,res;
 void add(int u,int v){
 	edge[++cnt].v=v;
@@ -35,7 +35,7 @@ void dfs1(int u,int f){
 	}
 }
 void dfs2(int u,int tp){
-	if(u==tp){//ËµÃ÷u²»ÊÇfa[u]µÄÇá¶ù×Ó 
+	if(u==tp){//è¯´æ˜uæ˜¯fa[u]çš„è½»å„¿å­ 
 		ssum[fa[u]]=(ssum[fa[u]]+sum[u])%mod;
 		ans[fa[u]]=(ans[fa[u]]+sum[u]*(sum[u]+mod-1)%mod)%mod;
 	}
@@ -59,7 +59,7 @@ ll query(int x){
 	for(int i=x;i;i-=lowbit(i)) res=(res+c[i])%mod;
 	return res;
 }
-void update(int x,ll y){//Ö»Î¬»¤Çá¶ù×ÓµÄÓ°Ïì 
+void update(int x,ll y){//åªç»´æŠ¤è½»å„¿å­çš„å½±å“ 
 	for(x=top[x];x;x=top[fa[x]]){
 		ans[fa[x]]=(ans[fa[x]]+mod-sum[x]*(sum[x]+mod-1)%mod)%mod;
 		sum[x]=(sum[x]+y)%mod;
